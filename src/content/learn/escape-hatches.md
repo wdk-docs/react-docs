@@ -4,32 +4,36 @@ title: Escape Hatches
 
 <Intro>
 
-Some of your components may need to control and synchronize with systems outside of React. For example, you might need to focus an input using the browser API, play and pause a video player implemented without React, or connect and listen to messages from a remote server. In this chapter, you'll learn the escape hatches that let you "step outside" React and connect to external systems. Most of your application logic and data flow should not rely on these features.
+您的一些组件可能需要控制React之外的系统并与之同步。
+例如，您可能需要使用浏览器API集中输入，播放并暂停在没有React的情况下实现的视频播放器，或者连接并收听来自远程服务器的消息。
+在本章中，您将学习逃生舱口，它可以让您走出React并连接到外部系统。
+您的大多数应用程序逻辑和数据流不应该依赖于这些功能。
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to "remember" information without re-rendering](/learn/referencing-values-with-refs)
-* [How to access DOM elements managed by React](/learn/manipulating-the-dom-with-refs)
-* [How to synchronize components with external systems](/learn/synchronizing-with-effects)
-* [How to remove unnecessary Effects from your components](/learn/you-might-not-need-an-effect)
-* [How an Effect's lifecycle is different from a component's](/learn/lifecycle-of-reactive-effects)
-* [How to prevent some values from re-triggering Effects](/learn/separating-events-from-effects)
-* [How to make your Effect re-run less often](/learn/removing-effect-dependencies)
-* [How to share logic between components](/learn/reusing-logic-with-custom-hooks)
+* [如何在不重新渲染的情况下`记住`信息](/learn/referencing-values-with-refs)
+* [如何访问React管理的DOM元素](/learn/manipulating-the-dom-with-refs)
+* [如何将组件与外部系统同步](/learn/synchronizing-with-effects)
+* [如何从组件中删除不必要的效果](/learn/you-might-not-need-an-effect)
+* [效果的生命周期与组件的生命周期有何不同](/learn/lifecycle-of-reactive-effects)
+* [如何防止某些值重新触发效果](/learn/separating-events-from-effects)
+* [如何减少效果重新运行的频率](/learn/removing-effect-dependencies)
+* [如何在组件之间共享逻辑](/learn/reusing-logic-with-custom-hooks)
 
 </YouWillLearn>
 
-## Referencing values with refs {/*referencing-values-with-refs*/}
+## 使用引用引用值 {/*referencing-values-with-refs*/}
 
-When you want a component to "remember" some information, but you don't want that information to [trigger new renders](/learn/render-and-commit), you can use a *ref*:
+当您希望组件`记住`某些信息，但不希望这些信息[触发新渲染](/learn/render-and-commit)时, 你可以使用 *ref*:
 
 ```js
 const ref = useRef(0);
 ```
 
-Like state, refs are retained by React between re-renders. However, setting state re-renders a component. Changing a ref does not! You can access the current value of that ref through the `ref.current` property.
+与state一样，refs在重新渲染之间由React保留。但是，设置状态会重新渲染零部件。更改引用不会！
+您可以通过`ref.current`属性访问该ref的当前值。
 
 <Sandpack>
 
@@ -54,15 +58,16 @@ export default function Counter() {
 
 </Sandpack>
 
-A ref is like a secret pocket of your component that React doesn't track. For example, you can use refs to store [timeout IDs](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value), [DOM elements](https://developer.mozilla.org/en-US/docs/Web/API/Element), and other objects that don't impact the component's rendering output.
+ref就像React无法跟踪的组件的一个秘密口袋。
+例如，您可以使用refs来存储[timeout IDs](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value), [DOM elements](https://developer.mozilla.org/en-US/docs/Web/API/Element), 以及其他不影响组件渲染输出的对象。
 
 <LearnMore path="/learn/referencing-values-with-refs">
 
-Read **[Referencing Values with Refs](/learn/referencing-values-with-refs)** to learn how to use refs to remember information.
+阅读 **[Referencing Values with Refs](/learn/referencing-values-with-refs)** 学习如何使用refs来记住信息。
 
 </LearnMore>
 
-## Manipulating the DOM with refs {/*manipulating-the-dom-with-refs*/}
+## 使用refs操作DOM {/*manipulating-the-dom-with-refs*/}
 
 React automatically updates the DOM to match your render output, so your components won't often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React—for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a ref to the DOM node. For example, clicking the button will focus the input using a ref:
 
@@ -97,7 +102,7 @@ Read **[Manipulating the DOM with Refs](/learn/manipulating-the-dom-with-refs)**
 
 </LearnMore>
 
-## Synchronizing with Effects {/*synchronizing-with-effects*/}
+## 与效果同步 {/*synchronizing-with-effects*/}
 
 Some components need to synchronize with external systems. For example, you might want to control a non-React component based on the React state, set up a server connection, or send an analytics log when a component appears on the screen. Unlike event handlers, which let you handle particular events, *Effects* let you run some code after rendering. Use them to synchronize your component with a system outside of React.
 
@@ -191,7 +196,7 @@ Read **[Synchronizing with Effects](/learn/synchronizing-with-effects)** to lear
 
 </LearnMore>
 
-## You Might Not Need An Effect {/*you-might-not-need-an-effect*/}
+## 你可能不需要效果 {/*you-might-not-need-an-effect*/}
 
 Effects are an escape hatch from the React paradigm. They let you "step outside" of React and synchronize your components with some external system. If there is no external system involved (for example, if you want to update a component's state when some props or state change), you shouldn't need an Effect. Removing unnecessary Effects will make your code easier to follow, faster to run, and less error-prone.
 
@@ -235,7 +240,7 @@ Read **[You Might Not Need an Effect](/learn/you-might-not-need-an-effect)** to 
 
 </LearnMore>
 
-## Lifecycle of reactive effects {/*lifecycle-of-reactive-effects*/}
+## 反应效应的生命周期 {/*lifecycle-of-reactive-effects*/}
 
 Effects have a different lifecycle from components. Components may mount, update, or unmount. An Effect can only do two things: to start synchronizing something, and later to stop synchronizing it. This cycle can happen multiple times if your Effect depends on props and state that change over time.
 
@@ -310,7 +315,7 @@ Read **[Lifecycle of Reactive Events](/learn/lifecycle-of-reactive-effects)** to
 
 </LearnMore>
 
-## Separating events from Effects {/*separating-events-from-effects*/}
+## 将事件与效果分离 {/*separating-events-from-effects*/}
 
 <Wip>
 
@@ -589,7 +594,7 @@ Read **[Separating Events from Effects](/learn/separating-events-from-effects)**
 
 </LearnMore>
 
-## Removing Effect dependencies {/*removing-effect-dependencies*/}
+## 删除效果相关性 {/*removing-effect-dependencies*/}
 
 When you write an Effect, the linter will verify that you've included every reactive value (like props and state) that the Effect reads in the list of your Effect's dependencies. This ensures that your Effect remains synchronized with the latest props and state of your component. Unnecessary dependencies may cause your Effect to run too often, or even create an infinite loop. The way you remove them depends on the case.
 
@@ -750,7 +755,7 @@ Read **[Removing Effect Dependencies](/learn/removing-effect-dependencies)** to 
 
 </LearnMore>
 
-## Reusing logic with custom Hooks {/*reusing-logic-with-custom-hooks*/}
+## 使用自定义挂钩重用逻辑 {/*reusing-logic-with-custom-hooks*/}
 
 React comes with built-in Hooks like `useState`, `useContext`, and `useEffect`. Sometimes, you’ll wish that there was a Hook for some more specific purpose: for example, to fetch data, to keep track of whether the user is online, or to connect to a chat room. To do this, you can create your own Hooks for your application's needs.
 
@@ -843,6 +848,6 @@ Read **[Reusing Logic with Custom Hooks](/learn/reusing-logic-with-custom-hooks)
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## 接下来是什么？ {/*whats-next*/}
 
-Head over to [Referencing Values with Refs](/learn/referencing-values-with-refs) to start reading this chapter page by page!
+前往[引用参考值](/learn/referencing-values-with-refs)，开始逐页阅读本章！

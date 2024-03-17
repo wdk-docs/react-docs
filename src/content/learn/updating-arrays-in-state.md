@@ -1,22 +1,22 @@
 ---
-title: Updating Arrays in State
+title: 更新状态中的数组
 ---
 
 <Intro>
 
-Arrays are mutable in JavaScript, but you should treat them as immutable when you store them in state. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array.
+数组在JavaScript中是可变的，但当您将它们存储在状态中时，应该将它们视为不可变的。就像使用对象一样，当您想要更新存储在state中的数组时，您需要创建一个新的数组（或复制现有数组），然后将state设置为使用新数组。
 
 </Intro>
 
 <YouWillLearn>
 
-- How to add, remove, or change items in an array in React state
-- How to update an object inside of an array
-- How to make array copying less repetitive with Immer
+- 如何在React状态下添加、删除或更改数组中的项
+- 如何更新数组内部的对象
+- 如何使用Immer减少阵列复制的重复性
 
 </YouWillLearn>
 
-## Updating arrays without mutation {/*updating-arrays-without-mutation*/}
+## 更新没有突变的数组 {/*updating-arrays-without-mutation*/}
 
 In JavaScript, arrays are just another kind of object. [Like with objects](/learn/updating-objects-in-state), **you should treat arrays in React state as read-only.** This means that you shouldn't reassign items inside an array like `arr[0] = 'bird'`, and you also shouldn't use methods that mutate the array, such as `push()` and `pop()`.
 
@@ -44,7 +44,7 @@ In React, you will be using `slice` (no `p`!) a lot more often because you don't
 
 </Pitfall>
 
-### Adding to an array {/*adding-to-an-array*/}
+### 添加到阵列 {/*adding-to-an-array*/}
 
 `push()` will mutate an array, which you don't want:
 
@@ -152,7 +152,7 @@ setArtists([
 
 In this way, spread can do the job of both `push()` by adding to the end of an array and `unshift()` by adding to the beginning of an array. Try it in the sandbox above!
 
-### Removing from an array {/*removing-from-an-array*/}
+### 从阵列中删除 {/*removing-from-an-array*/}
 
 The easiest way to remove an item from an array is to *filter it out*. In other words, you will produce a new array that will not contain that item. To do this, use the `filter` method, for example:
 
@@ -208,7 +208,7 @@ setArtists(
 
 Here, `artists.filter(a => a.id !== artist.id)` means "create an array that consists of those `artists` whose IDs are different from `artist.id`". In other words, each artist's "Delete" button will filter _that_ artist out of the array, and then request a re-render with the resulting array. Note that `filter` does not modify the original array.
 
-### Transforming an array {/*transforming-an-array*/}
+### 转换数组 {/*transforming-an-array*/}
 
 If you want to change some or all items of the array, you can use `map()` to create a **new** array. The function you will pass to `map` can decide what to do with each item, based on its data or its index (or both).
 
@@ -278,7 +278,7 @@ body { height: 300px; }
 
 </Sandpack>
 
-### Replacing items in an array {/*replacing-items-in-an-array*/}
+### 替换阵列中的项 {/*replacing-items-in-an-array*/}
 
 It is particularly common to want to replace one or more items in an array. Assignments like `arr[0] = 'bird'` are mutating the original array, so instead you'll want to use `map` for this as well.
 
@@ -332,7 +332,7 @@ button { margin: 5px; }
 
 </Sandpack>
 
-### Inserting into an array {/*inserting-into-an-array*/}
+### 插入数组 {/*inserting-into-an-array*/}
 
 Sometimes, you may want to insert an item at a particular position that's neither at the beginning nor at the end. To do this, you can use the `...` array spread syntax together with the `slice()` method. The `slice()` method lets you cut a "slice" of the array. To insert an item, you will create an array that spreads the slice _before_ the insertion point, then the new item, and then the rest of the original array.
 
@@ -396,7 +396,7 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-### Making other changes to an array {/*making-other-changes-to-an-array*/}
+### 对数组进行其他更改 {/*making-other-changes-to-an-array*/}
 
 There are some things you can't do with the spread syntax and non-mutating methods like `map()` and `filter()` alone. For example, you may want to reverse or sort an array. The JavaScript `reverse()` and `sort()` methods are mutating the original array, so you can't use them directly.
 
@@ -453,7 +453,7 @@ setList(nextList);
 
 Although `nextList` and `list` are two different arrays, **`nextList[0]` and `list[0]` point to the same object.** So by changing `nextList[0].seen`, you are also changing `list[0].seen`. This is a state mutation, which you should avoid! You can solve this issue in a similar way to [updating nested JavaScript objects](/learn/updating-objects-in-state#updating-a-nested-object)--by copying individual items you want to change instead of mutating them. Here's how.
 
-## Updating objects inside arrays {/*updating-objects-inside-arrays*/}
+## 更新数组内的对象 {/*updating-objects-inside-arrays*/}
 
 Objects are not _really_ located "inside" arrays. They might appear to be "inside" in code, but each object in an array is a separate value, to which the array "points". This is why you need to be careful when changing nested fields like `list[0]`. Another person's artwork list may point to the same element of the array!
 
@@ -654,7 +654,7 @@ function ItemList({ artworks, onToggle }) {
 
 In general, **you should only mutate objects that you have just created.** If you were inserting a *new* artwork, you could mutate it, but if you're dealing with something that's already in state, you need to make a copy.
 
-### Write concise update logic with Immer {/*write-concise-update-logic-with-immer*/}
+### 使用Immer编写简洁的更新逻辑 {/*write-concise-update-logic-with-immer*/}
 
 Updating nested arrays without mutation can get a little bit repetitive. [Just as with objects](/learn/updating-objects-in-state#write-concise-update-logic-with-immer):
 
@@ -789,7 +789,7 @@ Behind the scenes, Immer always constructs the next state from scratch according
 
 <Challenges>
 
-#### Update an item in the shopping cart {/*update-an-item-in-the-shopping-cart*/}
+#### 更新购物车中的商品 {/*update-an-item-in-the-shopping-cart*/}
 
 Fill in the `handleIncreaseClick` logic so that pressing "+" increases the corresponding number:
 
@@ -916,7 +916,7 @@ button { margin: 5px; }
 
 </Solution>
 
-#### Remove an item from the shopping cart {/*remove-an-item-from-the-shopping-cart*/}
+#### 从购物车中删除项目 {/*remove-an-item-from-the-shopping-cart*/}
 
 This shopping cart has a working "+" button, but the "–" button doesn't do anything. You need to add an event handler to it so that pressing it decreases the `count` of the corresponding product. If you press "–" when the count is 1, the product should automatically get removed from the cart. Make sure it never shows 0.
 
@@ -1077,7 +1077,7 @@ button { margin: 5px; }
 
 </Solution>
 
-#### Fix the mutations using non-mutative methods {/*fix-the-mutations-using-non-mutative-methods*/}
+#### 使用非突变方法修复突变 {/*fix-the-mutations-using-non-mutative-methods*/}
 
 In this example, all of the event handlers in `App.js` use mutation. As a result, editing and deleting todos doesn't work. Rewrite `handleAddTodo`, `handleChangeTodo`, and `handleDeleteTodo` to use the non-mutative methods:
 
@@ -1410,7 +1410,7 @@ ul, li { margin: 0; padding: 0; }
 </Solution>
 
 
-#### Fix the mutations using Immer {/*fix-the-mutations-using-immer*/}
+#### 使用Immer修复突变 {/*fix-the-mutations-using-immer*/}
 
 This is the same example as in the previous challenge. This time, fix the mutations by using Immer. For your convenience, `useImmer` is already imported, so you need to change the `todos` state variable to use it.
 

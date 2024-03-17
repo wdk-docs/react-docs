@@ -508,7 +508,7 @@ Psssst... That's a lot to type! It's okay to copy and paste code from this page.
 
 </Note>
 
-### 通过道具传递数据 {/*passing-data-through-props*/}
+### 通过属性传递数据 {/*passing-data-through-props*/}
 
 Next, you'll want to change the value of a square from empty to "X" when the user clicks on the square. With how you've built the board so far you would need to copy-paste the code that updates the square nine times (once for each square you have)! Instead of copy-pasting, React's component architecture allows you to create a reusable component to avoid messy, duplicated code.
 
