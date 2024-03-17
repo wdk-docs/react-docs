@@ -1,0 +1,206 @@
+{
+  "title": "学习 React",
+  "path": "/learn",
+  "routes": [
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "开始"
+    },
+    {
+      "title": "快速入门",
+      "path": "/learn",
+      "routes": [
+        {
+          "title": "辅导的: Tic-Tac-Toe",
+          "path": "/learn/tutorial-tic-tac-toe"
+        },
+        {
+          "title": "React中的思考",
+          "path": "/learn/thinking-in-react"
+        }
+      ]
+    },
+    {
+      "title": "安装",
+      "path": "/learn/installation",
+      "routes": [
+        {
+          "title": "启动一个新的React项目",
+          "path": "/learn/start-a-new-react-project"
+        },
+        {
+          "title": "将React添加到现有项目",
+          "path": "/learn/add-react-to-an-existing-project"
+        },
+        {
+          "title": "编辑器设置",
+          "path": "/learn/editor-setup"
+        },
+        {
+          "title": "使用TypeScript",
+          "path": "/learn/typescript"
+        },
+        {
+          "title": "React开发人员工具",
+          "path": "/learn/react-developer-tools"
+        }
+      ]
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "学习 REACT"
+    },
+    {
+      "title": "描述UI",
+      "tags": [],
+      "path": "/learn/describing-the-ui",
+      "routes": [
+        {
+          "title": "您的第一个组件",
+          "path": "/learn/your-first-component"
+        },
+        {
+          "title": "导入和导出组件",
+          "path": "/learn/importing-and-exporting-components"
+        },
+        {
+          "title": "用JSX编写标记",
+          "path": "/learn/writing-markup-with-jsx"
+        },
+        {
+          "title": "带卷括号的JSX中的JavaScript",
+          "path": "/learn/javascript-in-jsx-with-curly-braces"
+        },
+        {
+          "title": "将道具传递到组件",
+          "path": "/learn/passing-props-to-a-component"
+        },
+        {
+          "title": "条件呈现",
+          "path": "/learn/conditional-rendering"
+        },
+        {
+          "title": "渲染列表",
+          "path": "/learn/rendering-lists"
+        },
+        {
+          "title": "保持组件纯净",
+          "path": "/learn/keeping-components-pure"
+        },
+        {
+          "title": "作为树的用户界面",
+          "path": "/learn/understanding-your-ui-as-a-tree"
+        }
+      ]
+    },
+    {
+      "title": "添加交互性",
+      "path": "/learn/adding-interactivity",
+      "tags": [],
+      "routes": [
+        {
+          "title": "响应事件",
+          "path": "/learn/responding-to-events"
+        },
+        {
+          "title": "状态: 组件的内存",
+          "path": "/learn/state-a-components-memory"
+        },
+        {
+          "title": "渲染和提交",
+          "path": "/learn/render-and-commit"
+        },
+        {
+          "title": "状态为快照",
+          "path": "/learn/state-as-a-snapshot"
+        },
+        {
+          "title": "对一系列状态更新排队",
+          "path": "/learn/queueing-a-series-of-state-updates"
+        },
+        {
+          "title": "更新状态中的对象",
+          "path": "/learn/updating-objects-in-state"
+        },
+        {
+          "title": "正在更新状态中的阵列",
+          "path": "/learn/updating-arrays-in-state"
+        }
+      ]
+    },
+    {
+      "title": "管理状态",
+      "path": "/learn/managing-state",
+      "tags": ["intermediate"],
+      "routes": [
+        {
+          "title": "使用状态对输入作出反应",
+          "path": "/learn/reacting-to-input-with-state"
+        },
+        {
+          "title": "选择状态结构",
+          "path": "/learn/choosing-the-state-structure"
+        },
+        {
+          "title": "组件之间共享状态",
+          "path": "/learn/sharing-state-between-components"
+        },
+        {
+          "title": "保留和重置状态",
+          "path": "/learn/preserving-and-resetting-state"
+        },
+        {
+          "title": "将状态逻辑提取到约简中",
+          "path": "/learn/extracting-state-logic-into-a-reducer"
+        },
+        {
+          "title": "用上下文深度传递数据",
+          "path": "/learn/passing-data-deeply-with-context"
+        },
+        {
+          "title": "使用还原器和上下文进行放大",
+          "path": "/learn/scaling-up-with-reducer-and-context"
+        }
+      ]
+    },
+    {
+      "title": "逃生舱口",
+      "path": "/learn/escape-hatches",
+      "tags": ["advanced"],
+      "routes": [
+        {
+          "title": "使用引用引用值",
+          "path": "/learn/referencing-values-with-refs"
+        },
+        {
+          "title": "使用引用操作DOM",
+          "path": "/learn/manipulating-the-dom-with-refs"
+        },
+        {
+          "title": "与效果同步",
+          "path": "/learn/synchronizing-with-effects"
+        },
+        {
+          "title": "你可能不需要效果",
+          "path": "/learn/you-might-not-need-an-effect"
+        },
+        {
+          "title": "反应效应的生命周期",
+          "path": "/learn/lifecycle-of-reactive-effects"
+        },
+        {
+          "title": "将事件与效果分离",
+          "path": "/learn/separating-events-from-effects"
+        },
+        {
+          "title": "删除效果相关性",
+          "path": "/learn/removing-effect-dependencies"
+        },
+        {
+          "title": "使用自定义挂钩重用逻辑",
+          "path": "/learn/reusing-logic-with-custom-hooks"
+        }
+      ]
+    }
+  ]
+}
